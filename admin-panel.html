@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atletico Forense - Pannello Amministrazione</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <div id="login-section" class="auth-section active">
+            <h2>Accedi al Pannello Amministrativo</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Accedi</button>
+                <p id="login-error" class="error-message"></p>
+            </form>
+        </div>
+
+        <div id="dashboard-section" class="admin-dashboard">
+            <header class="dashboard-header">
+                <h2>Benvenuto, Amministratore!</h2>
+                <nav class="admin-nav">
+                    <ul class="admin-menu">
+                        <li><a href="#" class="nav-link active" data-section="news-management-section">Gestione News</a></li>
+                        <li><a href="#" class="nav-link" data-section="media-management-section">Gestione Media</a></li>
+                    </ul>
+                </nav>
+                <button id="logout-btn" class="btn-secondary">Logout</button>
+            </header>
+
+            <main class="admin-content">
+                <section id="news-management-section" class="admin-section active">
+                    <div class="news-management-section">
+                        <h3>Aggiungi Nuova News</h3>
+                        <form id="add-news-form">
+                            <div class="form-group">
+                                <label for="news-category">Categoria:</label>
+                                <select id="news-category" name="category" required>
+                                    <option value="">Seleziona Categoria</option>
+                                    <option value="COMUNICATI">Comunicati</option>
+                                    <option value="MERCATO">Mercato</option>
+                                    <option value="PARTITE">Partite</option>
+                                    <option value="EVENTI">Eventi</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="news-date">Data:</label>
+                                <input type="date" id="news-date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="news-title">Titolo:</label>
+                                <input type="text" id="news-title" name="title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="news-excerpt">Estratto (Breve descrizione):</label>
+                                <textarea id="news-excerpt" name="excerpt" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="news-content">Contenuto completo (Opzionale):</label>
+                                <textarea id="news-content" name="content" rows="6"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="news-image">Immagine News (Opzionale):</label>
+                                <input type="file" id="news-image" name="image" accept="image/*">
+                                <div id="image-preview-admin" class="image-preview">
+                                    <span class="image-preview-text">Nessuna immagine selezionata</span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary">Aggiungi News</button>
+                            <p id="add-news-message" class="success-message"></p>
+                        </form>
+                    </div>
+                    <div class="news-list-section">
+                        <h3>News Attuali</h3>
+                        <div id="current-news-container" class="news-grid-admin">
+                            <p class="no-news-message">Nessuna news presente.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="media-management-section" class="admin-section">
+                    <div class="media-management-section">
+                        <h3>Aggiungi Nuovo Contenuto Multimediale</h3>
+                        <form id="add-media-form">
+                            <div class="form-group">
+                                <label for="media-type">Tipo di contenuto:</label>
+                                <select id="media-type">
+                                    <option value="image">Immagine</option>
+                                    <option value="video">Video</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="media-title">Titolo:</label>
+                                <input type="text" id="media-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="media-description">Descrizione:</label>
+                                <textarea id="media-description" rows="3"></textarea>
+                            </div>
+                            
+                            <div id="image-upload-container" class="form-group">
+                                <label for="media-file">Carica Immagine:</label>
+                                <input type="file" id="media-file" accept="image/*">
+                            </div>
+                            <div id="video-upload-container" class="form-group" style="display: none;">
+                                <label for="video-file">Carica Video:</label>
+                                <input type="file" id="video-file" accept="video/*">
+                                <div id="video-preview-admin" class="image-preview">
+                                    <span class="image-preview-text">Nessun video selezionato</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-primary">Aggiungi Media</button>
+                            
+                            <div id="media-progress-container" class="progress-container" style="display: none;">
+                                <div id="media-progress-bar" class="progress-bar"></div>
+                                <span id="media-progress-text" class="progress-text">0%</span>
+                            </div>
+
+                            <p id="add-media-message" class="success-message"></p>
+                        </form>
+                    </div>
+                    <div class="media-list-section">
+                        <h3>Media Attuali</h3>
+                        <div id="current-media-container" class="media-grid-admin">
+                            <p class="no-media-message">Nessun contenuto multimediale presente.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

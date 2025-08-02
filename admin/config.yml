@@ -1,0 +1,39 @@
+backend:
+  name: git-gateway
+  branch: main # Sostituisci con il nome del tuo branch se è diverso
+
+publish_mode: editorial_workflow
+
+media_folder: "uploads/media"
+public_folder: "/uploads/media"
+
+collections:
+  - name: "content"
+    label: "Contenuti del Sito"
+    files:
+      - file: "db.json"
+        label: "Gestione Dati"
+        name: "db"
+        fields:
+          - label: "News"
+            name: "news"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "number", min: 1, value: 1, step: 1 }
+              - { label: "Titolo", name: "title", widget: "string" }
+              - { label: "Estratto", name: "excerpt", widget: "text" }
+              - { label: "Contenuto", name: "content", widget: "markdown" }
+              - { label: "Immagine", name: "image", widget: "image" }
+              - { label: "Data", name: "date", widget: "date", format: "DD/MM/YYYY" }
+              - { label: "Categoria", name: "category", widget: "string" }
+          - label: "Media"
+            name: "media"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "number", min: 1, value: 1, step: 1 }
+              - { label: "Titolo", name: "title", widget: "string" }
+              - { label: "Descrizione", name: "description", widget: "text" }
+              - { label: "Tipo", name: "type", widget: "select", options: ["image", "video"], default: "image" }
+              - { label: "Percorso Immagine (se immagine)", name: "src", widget: "image", required: false }
+              - { label: "ID Video YouTube (se video)", name: "videoId", widget: "string", required: false }
+              - { label: "Data", name: "date", widget: "date", format: "DD/MM/YYYY" }

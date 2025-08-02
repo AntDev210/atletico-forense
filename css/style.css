@@ -1,0 +1,778 @@
+:root {
+    --rosso: #E31937;
+    --bianco: #FFFFFF;
+    --nero: #1A1A1A;
+    --grigio-scuro: #333333;
+    --grigio-chiaro: #F5F5F5;
+    --border-color: #eee; /* Aggiunto variabile per il colore del bordo */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--nero);
+    background: var(--bianco);
+    line-height: 1.6;
+    overflow-x: hidden; /* Aggiunto per prevenire scroll orizzontale */
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.top-bar {
+    background-color: var(--nero);
+    color: var(--bianco);
+    padding: 8px 0;
+    font-size: 0.9rem;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-icons a {
+    color: var(--bianco);
+    margin-right: 15px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease; /* Aggiunta transizione */
+}
+
+.social-icons a:hover {
+    color: var(--rosso); /* Effetto hover */
+}
+
+.secondary-menu a {
+    color: var(--bianco);
+    text-decoration: none;
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease; /* Aggiunta transizione */
+}
+
+.secondary-menu a:hover {
+    color: var(--rosso); /* Effetto hover */
+}
+
+.main-header {
+    background-color: var(--bianco);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Aumentato z-index per sovrapposizione */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    gap: 20px;
+}
+
+.logo {
+    flex-shrink: 0;
+}
+
+.logo img {
+    height: 65px;
+    width: auto;
+}
+
+.main-menu {
+    display: flex;
+    list-style: none;
+}
+
+.main-menu li {
+    margin: 0 12px;
+    position: relative;
+}
+
+.main-menu a {
+    color: var(--nero);
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s, border-bottom 0.3s;
+    padding: 5px 0;
+}
+
+.main-menu a:hover,
+.main-menu a.active {
+    color: var(--rosso);
+    border-bottom: 2px solid var(--rosso);
+}
+
+.main-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Sottosezione menu a tendina (submenu) */
+.has-submenu > a .fa-caret-down {
+    margin-left: 5px;
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.has-submenu:hover > a .fa-caret-down {
+    transform: rotate(180deg);
+}
+
+.submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--bianco);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 1000;
+    opacity: 0; /* Inizialmente nascosto */
+    visibility: hidden; /* Inizialmente nascosto */
+    transform: translateY(10px); /* Leggera trasformazione iniziale */
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Transizioni per la comparsa */
+    border-radius: 0 0 4px 4px; /* Bordi arrotondati in basso */
+}
+
+.has-submenu:hover > .submenu {
+    opacity: 1; /* Visibile all'hover */
+    visibility: visible; /* Visibile all'hover */
+    transform: translateY(0); /* Ritorna alla posizione normale */
+}
+
+.submenu li a {
+    padding: 10px 15px;
+    font-size: 1em;
+    white-space: nowrap;
+    color: var(--nero);
+    display: block;
+}
+
+.submenu li a:hover {
+    background-color: var(--grigio-chiaro);
+    color: var(--rosso);
+}
+/* Fine sottosezione menu a tendina */
+
+
+.header-actions {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-tickets {
+    background-color: var(--rosso);
+    color: var(--bianco);
+    padding: 12px 28px; /* Aumentato il padding per un aspetto più grande */
+    border-radius: 8px; /* Bordi leggermente più arrotondati */
+    text-decoration: none;
+    font-weight: 700; /* Reso più in grassetto */
+    text-transform: uppercase; /* Già presente, ma confermato */
+    letter-spacing: 1px; /* Spaziatura maggiore tra le lettere */
+    display: inline-block; /* Assicura che padding e transform funzionino correttamente */
+    position: relative; /* Necessario per l'effetto shine o altre animazioni complesse */
+    overflow: hidden; /* Nasconde l'effetto shine fuori dal pulsante */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Ombra più pronunciata */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-tickets:hover {
+    background-color: #c7152e; /* Rosso più scuro per l'hover */
+    transform: translateY(-3px); /* Si solleva leggermente */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* Ombra si espande */
+}
+
+.btn-tickets:active {
+    transform: translateY(0); /* Ritorna alla posizione originale al click */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* Ombra si riduce per simulare la pressione */
+}
+
+/* Effetto "Shine" - Aggiunta */
+.btn-tickets::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%; /* Inizia fuori a sinistra */
+    width: 50%; /* Larghezza della striscia di luce */
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* Colore della luce (bianco semitrasparente) */
+    transform: skewX(-20deg); /* Inclina la striscia di luce */
+    transition: transform 0.5s ease; /* Transizione per il movimento */
+    z-index: 1; /* Assicura che sia sopra il colore del pulsante */
+}
+
+.btn-tickets:hover::before {
+    transform: translateX(200%) skewX(-20deg); /* Si muove da sinistra a destra all'hover */
+}
+
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.hero-slider {
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: var(--bianco);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Aggiunta ombra al testo */
+}
+
+.slide-content {
+    width: 100%;
+    text-align: center;
+    z-index: 1; /* Aggiunto per assicurare il contenuto sopra l'immagine */
+    position: relative; /* Aggiunto per z-index */
+}
+
+/* Animazione Boing (Bounce) dal basso */
+@keyframes bounceInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(1000px); /* Inizia molto in basso */
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-30px); /* Sale oltre la posizione finale */
+    }
+    80% {
+        transform: translateY(10px); /* Scende leggermente */
+    }
+    100% {
+        opacity: 1; /* Assicurato che rimanga visibile */
+        transform: translateY(0); /* Si assesta */
+    }
+}
+
+/* Stile per l'h1 del hero slider */
+.slide-content h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Stile per le singole parole che rimbalzano */
+.word-bounce {
+    display: inline-block; /* Importante per applicare le trasformazioni */
+    opacity: 0; /* Inizialmente invisibile */
+    animation-fill-mode: forwards; /* Mantiene lo stato finale dell'animazione */
+    animation-duration: 0.8s; /* Durata dell'animazione di ogni parola */
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* Funzione di temporizzazione più elastica */
+    /* animation-delay verrà impostato da JS */
+}
+
+.slide-content p {
+    font-size: 1.5em; /* Reso più grande */
+    margin-top: 0;
+    font-weight: 300; /* Reso più leggero */
+}
+
+
+.news-section {
+    padding: 60px 0;
+    background-color: var(--bianco); /* Aggiunto colore di sfondo esplicito */
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--border-color); /* Aggiunto bordo inferiore */
+    padding-bottom: 15px; /* Aggiunto padding inferiore */
+}
+
+.section-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--rosso);
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Modifiche al pulsante .view-all */
+.view-all {
+    background-color: var(--rosso); /* Sfondo rosso come il pulsante principale */
+    color: var(--bianco); /* Testo bianco */
+    padding: 8px 18px; /* Padding leggermente ridotto rispetto al btn-tickets */
+    border-radius: 5px; /* Bordi leggermente arrotondati */
+    text-decoration: none; /* Rimuove la sottolineatura del link */
+    font-weight: 600; /* Leggermente più in grassetto */
+    font-size: 0.9rem; /* Dimensione del font */
+    text-transform: uppercase; /* Testo in maiuscolo */
+    letter-spacing: 0.5px; /* Spaziatura tra le lettere */
+    display: inline-block; /* Importante per applicare padding e trasformazioni */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15); /* Ombra leggera */
+}
+
+.view-all:hover {
+    background-color: #c7152e; /* Rosso più scuro all'hover */
+    transform: translateY(-2px); /* Si solleva leggermente */
+    box-shadow: 0 5px 12px rgba(0,0,0,0.25); /* Ombra che si espande */
+}
+
+.view-all:active {
+    transform: translateY(0); /* Ritorna alla posizione originale al click */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Ombra si riduce */
+}
+/* Fine modifiche al pulsante .view-all */
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.news-card {
+    background-color: var(--bianco); /* Sfondo della card */
+    border: 1px solid #ddd; /* Bordo sottile */
+    border-radius: 8px; /* Bordi arrotondati */
+    overflow: hidden; /* Nasconde ciò che esce dai bordi */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombra più pronunciata */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizioni per hover */
+    display: flex; /* Utilizzo flexbox per il layout interno */
+    flex-direction: column; /* Contenuto in colonna */
+    height: 100%; /* Altezza piena */
+    cursor: pointer; /* Indica che è cliccabile */
+    /* Rimosse opacity e animazioni per news-card, verranno gestite da JS se necessario per fade-in */
+}
+
+.news-card:hover {
+    transform: translateY(-5px); /* Si solleva all'hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Ombra si espande all'hover */
+}
+
+.news-image-container {
+    width: 100%;
+    height: 200px; /* Altezza fissa per l'immagine */
+    overflow: hidden;
+    background-color: #f0f0f0; /* Sfondo di fallback */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.news-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assicura che l'immagine copra il container */
+    display: block;
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    padding: 15px 20px 0px; /* Padding sopra il meta */
+    color: var(--grigio-scuro);
+}
+
+.news-category {
+    color: var(--rosso);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.news-date {
+    color: var(--grigio-scuro);
+}
+
+.news-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 700; /* Reso più in grassetto */
+    color: var(--nero);
+    padding: 0px 20px; /* Padding laterale */
+}
+
+.news-excerpt {
+    color: var(--grigio-scuro);
+    font-size: 0.95rem;
+    flex-grow: 1; /* Permette all'excerpt di occupare spazio */
+    padding: 0px 20px 20px; /* Padding laterale e inferiore */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; /* Mantenuto per compatibilità legacy WebKit, potrebbe causare avviso in VS Code */
+    -webkit-line-clamp: 3; /* Tronca a 3 linee, potrebbe causare avviso in VS Code */
+    -webkit-box-orient: vertical; /* Indica l'orientamento verticale per il troncamento */
+}
+
+/* Stile per il messaggio di "nessuna news" */
+#no-main-news-message {
+    grid-column: 1 / -1; /* Occupa tutta la larghezza della griglia */
+    text-align: center;
+    padding: 30px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    color: #888;
+    font-style: italic;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.partners-section {
+    background-color: var(--grigio-chiaro);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.partners-title {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--nero);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+.partners-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.partners-grid img {
+    height: 40px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.partners-grid img:hover {
+    opacity: 1;
+}
+
+.main-footer {
+    background-color: var(--nero);
+    color: var(--bianco);
+    padding: 50px 0 30px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.footer-logo {
+    margin-bottom: 20px;
+    height: 100px;
+    width: auto;
+}
+
+.footer-col h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--rosso); /* Aggiunto colore rosso al titolo del footer */
+}
+
+.footer-col p {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.footer-col i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+    color: var(--rosso); /* Aggiunto colore rosso alle icone */
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: var(--bianco);
+    font-size: 1.2rem;
+    transition: color 0.3s ease; /* Aggiunta transizione */
+}
+
+.social-links a:hover {
+    color: var(--rosso); /* Effetto hover */
+}
+
+
+/* --- INIZIO STILI AGGIUNTI PER LA GALLERIA MULTIMEDIALE --- */
+
+.media-section {
+    padding: 60px 0;
+    background-color: var(--bianco);
+}
+
+.page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--rosso);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.media-card {
+    background-color: var(--bianco);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.media-content {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background-color: var(--grigio-chiaro);
+}
+
+.media-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.media-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.media-info {
+    padding: 15px 20px;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.media-info h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--nero);
+    margin: 0 0 5px 0;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.media-info p {
+    color: var(--grigio-scuro);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.no-media-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 30px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    color: #888;
+    font-style: italic;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+/* --- FINE STILI AGGIUNTI PER LA GALLERIA MULTIMEDIALE --- */
+
+
+/* --- Media Queries per la Responsività --- */
+@media (max-width: 992px) {
+    .main-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bianco);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    .main-menu.active {
+        display: flex;
+    }
+
+    .main-menu li {
+        margin: 10px 0;
+        border-bottom: 1px solid var(--border-color); /* Aggiunto bordo per separare le voci */
+    }
+
+    .main-menu li:last-child {
+        border-bottom: none; /* Rimosso bordo sull'ultima voce */
+    }
+
+    .main-menu li a {
+        padding: 10px 20px;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .slide-content h1 {
+        font-size: 3rem;
+    }
+
+    /* Submenu per schermi piccoli */
+    .has-submenu .submenu {
+        position: static; /* Cambiato da absolute a static */
+        box-shadow: none; /* Rimosso shadow */
+        transform: translateY(0); /* Rimosso trasformazione */
+        opacity: 1; /* Sempre visibile */
+        visibility: visible; /* Sempre visibile */
+        background-color: var(--grigio-chiaro); /* Sfondo diverso per submenu mobile */
+        padding-left: 15px; /* Indentazione per voci submenu */
+        border-radius: 0; /* Rimosso border-radius */
+    }
+
+    .submenu li a {
+        padding: 8px 15px;
+    }
+
+    .news-card .news-image-container {
+        height: 180px; /* Altezza ridotta per immagini news */
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .secondary-menu a {
+        margin: 0 10px;
+    }
+
+    .slide-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        text-align: left; /* Allineamento a sinistra del titolo */
+    }
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    .section-header .view-all {
+        align-self: flex-end; /* Sposta il pulsante a destra in colonna */
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr; /* Una colonna per le news */
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr; /* Una colonna per il footer */
+        text-align: center;
+    }
+
+    .footer-col {
+        margin-bottom: 30px;
+    }
+
+    .footer-col p i {
+        margin-right: 5px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        height: 50px;
+    }
+
+    .btn-tickets {
+        padding: 8px 15px;
+        font-size: 1em;
+    }
+
+    .slide-content h1 {
+        font-size: 2em;
+    }
+
+    .slide-content p {
+        font-size: 1em;
+    }
+
+    .section-header h2 {
+        font-size: 1.8em;
+    }
+
+    .news-card .news-title {
+        font-size: 1.2em;
+    }
+
+    .partners-grid img {
+        height: 30px;
+    }
+}
