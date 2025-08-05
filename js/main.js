@@ -23,72 +23,63 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Gestione animazione parole H1
+    // Gestione animazione parole H1 (VERSIONE CORRETTA)
     const words = document.querySelectorAll('.word-bounce');
     if (words.length > 0) {
         words.forEach((word, index) => {
             word.style.animationDelay = `${0.5 + (index * 0.3)}s`;
             word.style.animationName = 'bounceInUp';
-            word.style.opacity = '1';
         });
     }
 
     // --- Funzione per caricare e visualizzare le news ---
-    function loadAndDisplayNews() {
-        const mainNewsGrid = document.querySelector('.news-grid');
-        const noMainNewsMessage = document.getElementById('no-main-news-message');
+    async function loadNews() {
+        try {
+            const response = await fetch('/db.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            const newsContainer = document.getElementById('main-news-grid');
+            const noNewsMessage = document.getElementById('no-main-news-message');
 
-        if (!mainNewsGrid || !noMainNewsMessage) return;
+            if (data.news && data.news.length > 0) {
+                noNewsMessage.style.display = 'none';
+                newsContainer.innerHTML = '';
+                
+                data.news.forEach(newsItem => {
+                    const newsArticle = document.createElement('article');
+                    newsArticle.className = 'news-article';
 
-        fetch('db.json')
-            .then(response => response.json())
-            .then(data => {
-                const newsItems = data.news || [];
-                mainNewsGrid.innerHTML = '';
+                    const newsTitle = document.createElement('h3');
+                    newsTitle.textContent = newsItem.title;
 
-                if (newsItems.length === 0) {
-                    noMainNewsMessage.style.display = 'block';
-                } else {
-                    noMainNewsMessage.style.display = 'none';
+                    if (newsItem.image) {
+                        const newsImage = document.createElement('img');
+                        newsImage.src = newsItem.image;
+                        newsImage.alt = newsItem.title;
+                        newsArticle.appendChild(newsImage);
+                    }
+
+                    const newsBody = document.createElement('p');
+                    newsBody.textContent = newsItem.body;
+
+                    newsArticle.appendChild(newsTitle);
+                    newsArticle.appendChild(newsBody);
                     
-                    newsItems.sort((a, b) => {
-                        const [dayA, monthA, yearA] = a.date.split('/');
-                        const [dayB, monthB, yearB] = b.date.split('/');
-                        const dateA = new Date(`${yearA}-${monthA}-${dayA}`);
-                        const dateB = new Date(`${yearB}-${monthB}-${dayB}`);
-                        return dateB - dateA;
-                    });
-        
-                    newsItems.forEach(news => {
-                        const newsCard = document.createElement('article');
-                        newsCard.classList.add('news-card');
-                        newsCard.dataset.newsId = news.id;
-                        newsCard.style.cursor = 'pointer';
-        
-                        let imageHtml = '';
-                        if (news.image) { 
-                            imageHtml = `<div class="news-image-container"><img src="${news.image}" alt="Immagine News" class="news-image"></div>`;
-                        }
-        
-                        newsCard.innerHTML = `
-                            ${imageHtml}
-                            <div class="news-content">
-                                <div class="news-meta">
-                                    <span class="news-category">${news.category}</span>
-                                    <span class="news-date">${news.date}</span>
-                                </div>
-                                <h3 class="news-title">${news.title}</h3>
-                                <p class="news-excerpt">${news.excerpt}</p>
-                            </div>
-                        `;
-                        mainNewsGrid.appendChild(newsCard);
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Errore nel caricamento delle news:', error);
-                if (noMainNewsMessage) noMainNewsMessage.style.display = 'block';
-            });
+                    newsContainer.appendChild(newsArticle);
+                });
+            } else {
+                noNewsMessage.style.display = 'block';
+            }
+        } catch (error) {
+            console.error("Errore nel caricamento delle news:", error);
+            const noNewsMessage = document.getElementById('no-main-news-message');
+            if (noNewsMessage) {
+                noNewsMessage.textContent = 'Errore nel caricamento delle news.';
+                noNewsMessage.style.display = 'block';
+            }
+        }
     }
 
     // --- Funzione per caricare e visualizzare i contenuti multimediali ---
@@ -168,6 +159,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.body.classList.contains('media-page')) {
         loadMediaContent();
     } else {
-        loadAndDisplayNews();
+        loadNews();
     }
 });

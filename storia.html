@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atletico Forense - Official site</title>
+    <title>Atletico Forense - Storia</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    
+<body class="storia-page">
+
     <header class="main-header">
         <div class="container">
             <div class="header-content">
@@ -21,9 +21,9 @@
                 
                 <nav class="main-nav">
                     <ul class="main-menu">
-                        <li><a href="index.html" class="active">HOME</a></li>
+                        <li><a href="index.html">HOME</a></li>
                         <li><a href="squadra.html">LA SQUADRA</a></li>
-                        <li><a href="storia.html">STORIA</a></li>
+                        <li><a href="storia.html" class="active">STORIA</a></li>
                         <li><a href="calendario.html">CALENDARIO</a></li>
                         <li><a href="https://sites.google.com/view/afcuneo" target="_blank">PAGELLONE</a></li>
                         <li class="has-submenu">
@@ -56,44 +56,43 @@
         </div>
     </header>
 
-    <section class="hero-slider">
-        <div class="slide active">
-            <div class="slide-content">
-                <h1>
-                    <span class="word-bounce">ATLETICO</span>
-                    <span class="word-bounce">FORENSE</span>
-                    <span class="word-bounce">CUNEO</span>
-                </h1>
-                <p>La passione per lo sport dal 2019</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="news-section">
+    <main class="page-content">
         <div class="container">
-            <div class="section-header">
-                <h2>ULTIME NEWS</h2>
-                <a href="#" class="view-all">Vedi tutte</a>
+            <h1 class="page-title">La nostra storia</h1>
+            
+            <div class="story-content">
+                <p>
+                    Nasciamo, anzi, ri-nasciamo dopo le mitiche gesta delle squadre dei Fori di Mondovì e Saluzzo, nell'autunno del 2019, per iniziativa di Francesco Ieriti, Avvocato e Collega divenuto, per acclamzione, il benamato"Pres" e col placet del Presidente (quello vero...) Avv. Claudio Massa col Suo Consiglio dell'Ordine, che simpatizzano e sostengono sempre la nostra temeraria iniziativa sportiva. 
+                </p>
+                <p>
+                    L'obiettivo è semplice: divertirsi, nonostante età e acciacchi, rincorrendo il pallone, come si faceva da ragazzini, ma anche ricordare amici e, ovviamente, fare del bene con iniziative e memorial.
+                </p>
+                <p>
+                    Al "battesimo del fuoco" con i Colleghi transalpini di Nizza allo Stadio Paschiero di Cuneo, datato 26 ottobre 2019, sono seguiti numerosi incontri, con rappresentative di bancari, Guardia di Finanza, Carabinieri, squadre locali di calcio a 8 e di amatori.  
+                </p>
+                <p>
+                    Un'intensa attività, sospesa con lo stop forzato per la pandemia e che ora sta ripartendo con un tour sui campi della Provincia e non solo.
+                </p>
+                <p>
+                    Giochiamo a 7 o 8 con formazioni variabili a seconda della disponibilità serale dei Colleghi, coinvolgendo una ventina di Avvocati, ma anche praticanti, Ufficiali di Polizia Giudiziaria, Cancellieri, Magistrati... insomma, chi gravita nell'ambiente forense cuneese e vuole darci una mano è il benvenuto.
+                </p>
+                <p>
+                    Contiamo su valenti giovani, su qualche anzianotto dai piedi educati e, talvolta, sul buon cuore degli avversari, ma anche su immancabili pizze post-gara, che segnano sempre il nostro "terzo tempo": quello in cui diamo, in genere, il meglio. 
+                </p>
+                <p>
+                    Il saldo goal subiti-goal segnati, magari, non sarà positivo, ma quello che conta è un altro risultato: fare qualcosa di piacevole "al di fuori" delle aule del Tribunale, perché, in fondo, esserci è già una vittoria.  
+                </p>
+                
+                <p class="story-source">
+                    <a href="https://sites.google.com/view/afcuneo" target="_blank">Fonte: A. Borgotallo - Il Pagellone</a>
+                </p>
             </div>
             
-            <div class="news-grid" id="main-news-grid">
-                <p id="no-main-news-message" style="text-align: center; color: #888; font-style: italic; display: none;">Nessuna news presente al momento.</p>
-            </div>
+            <section class="team-image-placeholder">
+                <img src="images/storia-squadra.jpg" alt="Foto della squadra">
+            </section>
         </div>
-    </section>
-
-    <section class="partners-section">
-        <div class="container">
-            <h3 class="partners-title">I NOSTRI PARTNER</h3>
-            <div class="partners-grid">
-                <img src="images/partner1.png" alt="Partner 1">
-                <img src="images/partner2.png" alt="Partner 2">
-                <img src="images/partner3.png" alt="Partner 3">
-                <img src="images/partner4.png" alt="Partner 4">
-                <img src="images/partner5.png" alt="Partner 5">
-            </div>
-        </div>
-    </section>
+    </main>
 
     <footer class="main-footer">
         <div class="container">

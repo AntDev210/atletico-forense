@@ -4,7 +4,7 @@
     --nero: #1A1A1A;
     --grigio-scuro: #333333;
     --grigio-chiaro: #F5F5F5;
-    --border-color: #eee; /* Aggiunto variabile per il colore del bordo */
+    --border-color: #eee;
 }
 
 * {
@@ -18,7 +18,7 @@ body {
     color: var(--nero);
     background: var(--bianco);
     line-height: 1.6;
-    overflow-x: hidden; /* Aggiunto per prevenire scroll orizzontale */
+    overflow-x: hidden;
 }
 
 .container {
@@ -27,50 +27,12 @@ body {
     margin: 0 auto;
 }
 
-.top-bar {
-    background-color: var(--nero);
-    color: var(--bianco);
-    padding: 8px 0;
-    font-size: 0.9rem;
-}
-
-.top-bar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.social-icons a {
-    color: var(--bianco);
-    margin-right: 15px;
-    font-size: 0.9rem;
-    transition: color 0.3s ease; /* Aggiunta transizione */
-}
-
-.social-icons a:hover {
-    color: var(--rosso); /* Effetto hover */
-}
-
-.secondary-menu a {
-    color: var(--bianco);
-    text-decoration: none;
-    margin-left: 20px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
-    transition: color 0.3s ease; /* Aggiunta transizione */
-}
-
-.secondary-menu a:hover {
-    color: var(--rosso); /* Effetto hover */
-}
-
 .main-header {
     background-color: var(--bianco);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
-    z-index: 1000; /* Aumentato z-index per sovrapposizione */
+    z-index: 1000;
 }
 
 .header-content {
@@ -144,17 +106,17 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     min-width: 200px;
     z-index: 1000;
-    opacity: 0; /* Inizialmente nascosto */
-    visibility: hidden; /* Inizialmente nascosto */
-    transform: translateY(10px); /* Leggera trasformazione iniziale */
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Transizioni per la comparsa */
-    border-radius: 0 0 4px 4px; /* Bordi arrotondati in basso */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    border-radius: 0 0 4px 4px;
 }
 
 .has-submenu:hover > .submenu {
-    opacity: 1; /* Visibile all'hover */
-    visibility: visible; /* Visibile all'hover */
-    transform: translateY(0); /* Ritorna alla posizione normale */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .submenu li a {
@@ -182,28 +144,28 @@ body {
 .btn-tickets {
     background-color: var(--rosso);
     color: var(--bianco);
-    padding: 12px 28px; /* Aumentato il padding per un aspetto più grande */
-    border-radius: 8px; /* Bordi leggermente più arrotondati */
+    padding: 12px 28px;
+    border-radius: 8px;
     text-decoration: none;
-    font-weight: 700; /* Reso più in grassetto */
-    text-transform: uppercase; /* Già presente, ma confermato */
-    letter-spacing: 1px; /* Spaziatura maggiore tra le lettere */
-    display: inline-block; /* Assicura che padding e transform funzionino correttamente */
-    position: relative; /* Necessario per l'effetto shine o altre animazioni complesse */
-    overflow: hidden; /* Nasconde l'effetto shine fuori dal pulsante */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Ombra più pronunciata */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .btn-tickets:hover {
-    background-color: #c7152e; /* Rosso più scuro per l'hover */
-    transform: translateY(-3px); /* Si solleva leggermente */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* Ombra si espande */
+    background-color: #c7152e;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 .btn-tickets:active {
-    transform: translateY(0); /* Ritorna alla posizione originale al click */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* Ombra si riduce per simulare la pressione */
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 /* Effetto "Shine" - Aggiunta */
@@ -211,17 +173,17 @@ body {
     content: '';
     position: absolute;
     top: 0;
-    left: -75%; /* Inizia fuori a sinistra */
-    width: 50%; /* Larghezza della striscia di luce */
+    left: -75%;
+    width: 50%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.3); /* Colore della luce (bianco semitrasparente) */
-    transform: skewX(-20deg); /* Inclina la striscia di luce */
-    transition: transform 0.5s ease; /* Transizione per il movimento */
-    z-index: 1; /* Assicura che sia sopra il colore del pulsante */
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-20deg);
+    transition: transform 0.5s ease;
+    z-index: 1;
 }
 
 .btn-tickets:hover::before {
-    transform: translateX(200%) skewX(-20deg); /* Si muove da sinistra a destra all'hover */
+    transform: translateX(200%) skewX(-20deg);
 }
 
 
@@ -245,32 +207,32 @@ body {
     display: flex;
     align-items: center;
     color: var(--bianco);
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Aggiunta ombra al testo */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .slide-content {
     width: 100%;
     text-align: center;
-    z-index: 1; /* Aggiunto per assicurare il contenuto sopra l'immagine */
-    position: relative; /* Aggiunto per z-index */
+    z-index: 1;
+    position: relative;
 }
 
 /* Animazione Boing (Bounce) dal basso */
 @keyframes bounceInUp {
     0% {
         opacity: 0;
-        transform: translateY(1000px); /* Inizia molto in basso */
+        transform: translateY(1000px);
     }
     60% {
         opacity: 1;
-        transform: translateY(-30px); /* Sale oltre la posizione finale */
+        transform: translateY(-30px);
     }
     80% {
-        transform: translateY(10px); /* Scende leggermente */
+        transform: translateY(10px);
     }
     100% {
-        opacity: 1; /* Assicurato che rimanga visibile */
-        transform: translateY(0); /* Si assesta */
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -285,24 +247,23 @@ body {
 
 /* Stile per le singole parole che rimbalzano */
 .word-bounce {
-    display: inline-block; /* Importante per applicare le trasformazioni */
-    opacity: 0; /* Inizialmente invisibile */
-    animation-fill-mode: forwards; /* Mantiene lo stato finale dell'animazione */
-    animation-duration: 0.8s; /* Durata dell'animazione di ogni parola */
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* Funzione di temporizzazione più elastica */
-    /* animation-delay verrà impostato da JS */
+    display: inline-block;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-duration: 0.8s;
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
 }
 
 .slide-content p {
-    font-size: 1.5em; /* Reso più grande */
+    font-size: 1.5em;
     margin-top: 0;
-    font-weight: 300; /* Reso più leggero */
+    font-weight: 300;
 }
 
 
 .news-section {
     padding: 60px 0;
-    background-color: var(--bianco); /* Aggiunto colore di sfondo esplicito */
+    background-color: var(--bianco);
 }
 
 .section-header {
@@ -310,8 +271,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    border-bottom: 2px solid var(--border-color); /* Aggiunto bordo inferiore */
-    padding-bottom: 15px; /* Aggiunto padding inferiore */
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
 }
 
 .section-header h2 {
@@ -324,29 +285,29 @@ body {
 
 /* Modifiche al pulsante .view-all */
 .view-all {
-    background-color: var(--rosso); /* Sfondo rosso come il pulsante principale */
-    color: var(--bianco); /* Testo bianco */
-    padding: 8px 18px; /* Padding leggermente ridotto rispetto al btn-tickets */
-    border-radius: 5px; /* Bordi leggermente arrotondati */
-    text-decoration: none; /* Rimuove la sottolineatura del link */
-    font-weight: 600; /* Leggermente più in grassetto */
-    font-size: 0.9rem; /* Dimensione del font */
-    text-transform: uppercase; /* Testo in maiuscolo */
-    letter-spacing: 0.5px; /* Spaziatura tra le lettere */
-    display: inline-block; /* Importante per applicare padding e trasformazioni */
+    background-color: var(--rosso);
+    color: var(--bianco);
+    padding: 8px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15); /* Ombra leggera */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
 }
 
 .view-all:hover {
-    background-color: #c7152e; /* Rosso più scuro all'hover */
-    transform: translateY(-2px); /* Si solleva leggermente */
-    box-shadow: 0 5px 12px rgba(0,0,0,0.25); /* Ombra che si espande */
+    background-color: #c7152e;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.25);
 }
 
 .view-all:active {
-    transform: translateY(0); /* Ritorna alla posizione originale al click */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Ombra si riduce */
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 /* Fine modifiche al pulsante .view-all */
 
@@ -357,29 +318,28 @@ body {
 }
 
 .news-card {
-    background-color: var(--bianco); /* Sfondo della card */
-    border: 1px solid #ddd; /* Bordo sottile */
-    border-radius: 8px; /* Bordi arrotondati */
-    overflow: hidden; /* Nasconde ciò che esce dai bordi */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombra più pronunciata */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizioni per hover */
-    display: flex; /* Utilizzo flexbox per il layout interno */
-    flex-direction: column; /* Contenuto in colonna */
-    height: 100%; /* Altezza piena */
-    cursor: pointer; /* Indica che è cliccabile */
-    /* Rimosse opacity e animazioni per news-card, verranno gestite da JS se necessario per fade-in */
+    background-color: var(--bianco);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    cursor: pointer;
 }
 
 .news-card:hover {
-    transform: translateY(-5px); /* Si solleva all'hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Ombra si espande all'hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .news-image-container {
     width: 100%;
-    height: 200px; /* Altezza fissa per l'immagine */
+    height: 200px;
     overflow: hidden;
-    background-color: #f0f0f0; /* Sfondo di fallback */
+    background-color: #f0f0f0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -388,7 +348,7 @@ body {
 .news-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Assicura che l'immagine copra il container */
+    object-fit: cover;
     display: block;
 }
 
@@ -397,7 +357,7 @@ body {
     justify-content: space-between;
     margin-bottom: 10px;
     font-size: 0.8rem;
-    padding: 15px 20px 0px; /* Padding sopra il meta */
+    padding: 15px 20px 0px;
     color: var(--grigio-scuro);
 }
 
@@ -414,26 +374,26 @@ body {
 .news-title {
     font-size: 1.3rem;
     margin-bottom: 10px;
-    font-weight: 700; /* Reso più in grassetto */
+    font-weight: 700;
     color: var(--nero);
-    padding: 0px 20px; /* Padding laterale */
+    padding: 0px 20px;
 }
 
 .news-excerpt {
     color: var(--grigio-scuro);
     font-size: 0.95rem;
-    flex-grow: 1; /* Permette all'excerpt di occupare spazio */
-    padding: 0px 20px 20px; /* Padding laterale e inferiore */
+    flex-grow: 1;
+    padding: 0px 20px 20px;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box; /* Mantenuto per compatibilità legacy WebKit, potrebbe causare avviso in VS Code */
-    -webkit-line-clamp: 3; /* Tronca a 3 linee, potrebbe causare avviso in VS Code */
-    -webkit-box-orient: vertical; /* Indica l'orientamento verticale per il troncamento */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 /* Stile per il messaggio di "nessuna news" */
 #no-main-news-message {
-    grid-column: 1 / -1; /* Occupa tutta la larghezza della griglia */
+    grid-column: 1 / -1;
     text-align: center;
     padding: 30px;
     border: 1px dashed #ccc;
@@ -501,7 +461,7 @@ body {
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--rosso); /* Aggiunto colore rosso al titolo del footer */
+    color: var(--rosso);
 }
 
 .footer-col p {
@@ -513,7 +473,7 @@ body {
     margin-right: 10px;
     width: 20px;
     text-align: center;
-    color: var(--rosso); /* Aggiunto colore rosso alle icone */
+    color: var(--rosso);
 }
 
 .social-links {
@@ -524,33 +484,80 @@ body {
 .social-links a {
     color: var(--bianco);
     font-size: 1.2rem;
-    transition: color 0.3s ease; /* Aggiunta transizione */
+    transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--rosso); /* Effetto hover */
+    color: var(--rosso);
 }
 
 
-/* --- INIZIO STILI AGGIUNTI PER LA GALLERIA MULTIMEDIALE --- */
+/* --- INIZIO STILI AGGIUNTI PER LA GALLERIA MULTIMEDIALE E STORIA --- */
 
-.media-section {
-    padding: 60px 0;
-    background-color: var(--bianco);
+.page-content {
+    /* Modificato per dare spazio e contenere la fonte posizionata in assoluto */
+    padding-top: 30px;
+    padding-bottom: 60px;
 }
 
 .page-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 3rem;
     text-align: center;
-    margin-bottom: 40px;
     color: var(--rosso);
     text-transform: uppercase;
     letter-spacing: 1px;
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 15px;
+    /* Modificato per avere una distanza uguale sopra e sotto */
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
+/* Stili per pagina "Storia" */
+.story-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    /* AGGIUNTO: Necessario per posizionare la fonte in modo assoluto */
+    position: relative;
+    padding-bottom: 40px; /* Aggiunge spazio in fondo per la fonte */
+}
+
+.story-content p {
+    margin-bottom: 20px;
+}
+
+.story-source {
+    /* AGGIUNTO: Stili per posizionare la fonte in basso a destra */
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-style: italic;
+    color: var(--grigio-scuro);
+    font-size: 0.9rem;
+}
+/* AGGIUNTO: Stile per il link all'interno della fonte, per rimuovere sottolineatura e colore predefinito */
+.story-source a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.team-image-placeholder {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.team-image-placeholder img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Stili per pagina "Media" */
 .media-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -624,11 +631,11 @@ body {
     border-radius: 8px;
     color: #888;
     font-style: italic;
-    background-color: #fff;
+    background-color: var(--bianco);
     box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
-/* --- FINE STILI AGGIUNTI PER LA GALLERIA MULTIMEDIALE --- */
+/* --- FINE STILI AGGIUNTI PER LA GALLERIA MULTIMEDIALE E STORIA --- */
 
 
 /* --- Media Queries per la Responsività --- */
@@ -652,11 +659,11 @@ body {
 
     .main-menu li {
         margin: 10px 0;
-        border-bottom: 1px solid var(--border-color); /* Aggiunto bordo per separare le voci */
+        border-bottom: 1px solid var(--border-color);
     }
 
     .main-menu li:last-child {
-        border-bottom: none; /* Rimosso bordo sull'ultima voce */
+        border-bottom: none;
     }
 
     .main-menu li a {
@@ -674,14 +681,14 @@ body {
 
     /* Submenu per schermi piccoli */
     .has-submenu .submenu {
-        position: static; /* Cambiato da absolute a static */
-        box-shadow: none; /* Rimosso shadow */
-        transform: translateY(0); /* Rimosso trasformazione */
-        opacity: 1; /* Sempre visibile */
-        visibility: visible; /* Sempre visibile */
-        background-color: var(--grigio-chiaro); /* Sfondo diverso per submenu mobile */
-        padding-left: 15px; /* Indentazione per voci submenu */
-        border-radius: 0; /* Rimosso border-radius */
+        position: static;
+        box-shadow: none;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        background-color: var(--grigio-chiaro);
+        padding-left: 15px;
+        border-radius: 0;
     }
 
     .submenu li a {
@@ -689,20 +696,19 @@ body {
     }
 
     .news-card .news-image-container {
-        height: 180px; /* Altezza ridotta per immagini news */
+        height: 180px;
+    }
+
+    .main-nav {
+        justify-content: flex-start;
+    }
+
+    .header-content {
+        justify-content: space-between;
     }
 }
 
 @media (max-width: 768px) {
-    .top-bar .container {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .secondary-menu a {
-        margin: 0 10px;
-    }
-
     .slide-content h1 {
         font-size: 2.5rem;
     }
@@ -711,21 +717,21 @@ body {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
-        text-align: left; /* Allineamento a sinistra del titolo */
+        text-align: left;
     }
     .section-header h2 {
         font-size: 2rem;
     }
     .section-header .view-all {
-        align-self: flex-end; /* Sposta il pulsante a destra in colonna */
+        align-self: flex-end;
     }
 
     .news-grid {
-        grid-template-columns: 1fr; /* Una colonna per le news */
+        grid-template-columns: 1fr;
     }
 
     .footer-grid {
-        grid-template-columns: 1fr; /* Una colonna per il footer */
+        grid-template-columns: 1fr;
         text-align: center;
     }
 
@@ -743,6 +749,18 @@ body {
 
     .page-title {
         font-size: 2.5rem;
+    }
+
+    .header-actions {
+        order: 3;
+    }
+
+    .logo {
+        order: 2;
+    }
+
+    .menu-toggle {
+        order: 1;
     }
 }
 
