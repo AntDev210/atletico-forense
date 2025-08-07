@@ -1,4 +1,14 @@
 {
-  "news": [],
+  "news": [
+    {
+      "date": "07/08/2025",
+      "id": 1,
+      "title": "prova",
+      "excerpt": "prova ragazzi",
+      "content": "c﻿onetnuto molto bello",
+      "image": "/uploads/media/immagine-whatsapp-2025-08-06-ore-09.32.20_e490b1b9.jpg",
+      "category": "Campioni"
+    }
+  ],
   "media": []
 }
