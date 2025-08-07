@@ -10,5 +10,14 @@
       "category": "Campioni"
     }
   ],
-  "media": []
+  "media": [
+    {
+      "type": "video",
+      "date": "08/08/2025",
+      "id": 2,
+      "title": "21",
+      "description": "21",
+      "src": "/uploads/media/immagine-whatsapp-2025-08-06-ore-09.32.20_e490b1b9.jpg"
+    }
+  ]
 }
