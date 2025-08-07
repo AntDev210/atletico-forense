@@ -788,3 +788,12 @@ font-size: 1.2em;
 height: 30px;
 }
 }
+
+
+.media-gallery-grid {
+    margin-bottom: 60px;
+}
+
+#gallery-section {
+    margin-bottom: 60px; /* Aggiunge spazio sotto l'intera sezione della galleria immagini */
+}
