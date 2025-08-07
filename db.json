@@ -1,36 +1,4 @@
 {
-<<<<<<< HEAD
   "news": [],
   "media": []
-=======
-  "news": [
-    {
-      "date": "07/08/2025",
-      "id": 1,
-      "title": "prova",
-      "excerpt": "prova ragazzi",
-      "content": "c﻿onetnuto molto bello",
-      "image": "/uploads/media/immagine-whatsapp-2025-08-06-ore-09.32.20_e490b1b9.jpg",
-      "category": "Campioni"
-    }
-  ],
-  "media": [
-    {
-      "type": "video",
-      "date": "08/08/2025",
-      "id": 2,
-      "title": "21",
-      "description": "21",
-      "src": ""
-    },
-    {
-      "type": "video",
-      "date": "08/08/2025",
-      "id": 1,
-      "title": "eq",
-      "description": "eqw",
-      "src": "/uploads/media/video-whatsapp-2025-07-28-ore-19.59.08_33d116f3.mp4"
-    }
-  ]
->>>>>>> 9560551608af55af2edc10d7d4fadc6c79ca1014
 }
