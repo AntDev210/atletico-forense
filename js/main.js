@@ -1,82 +1,135 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
 
-    // Gestione del menu a tendina
+    // Gestione della barra di navigazione trasparente
+    const header = document.querySelector('.main-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Gestione menu mobile
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainMenu = document.querySelector('.main-menu');
+    if (menuToggle && mainMenu) {
+        menuToggle.addEventListener('click', () => {
+            mainMenu.classList.toggle('active');
+            // Gestione dell'icona (hamburger/X)
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    }
+
+    // Gestione menu a tendina per desktop (con hover)
     const hasSubmenus = document.querySelectorAll('.has-submenu');
     hasSubmenus.forEach(item => {
         const submenu = item.querySelector('.submenu');
         if (submenu) {
             item.addEventListener('mouseenter', () => {
-                submenu.style.display = 'block';
+                submenu.style.opacity = '1';
+                submenu.style.visibility = 'visible';
+                submenu.style.transform = 'translateY(0)';
             });
             item.addEventListener('mouseleave', () => {
-                submenu.style.display = 'none';
+                submenu.style.opacity = '0';
+                submenu.style.visibility = 'hidden';
+                submenu.style.transform = 'translateY(10px)';
             });
         }
     });
 
-    // Gestione del menu mobile
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mainMenu = document.querySelector('.main-menu');
-    if (menuToggle && mainMenu) {
-        menuToggle.addEventListener('click', function() {
-            mainMenu.classList.toggle('active');
-        });
-    }
+    // --- Funzione per l'animazione di intro (MODIFICATA) ---
+    function handleIntroAnimation() {
+        const logoWrapper = document.querySelector('.logo-animation-wrapper');
+        const fullLogo = document.querySelector('.full-logo');
+        const leftHalf = document.querySelector('.left-half');
+        const rightHalf = document.querySelector('.right-half');
+        const titleContainer = document.querySelector('.animated-title-container');
+        const words = document.querySelectorAll('.animated-title .word');
+        const subTitle = document.querySelector('.animated-subtitle');
+        
+        if (logoWrapper && fullLogo && leftHalf && rightHalf && titleContainer && words.length > 0 && subTitle) {
+            
+            // FASE 1: Il wrapper e il logo intero diventano visibili e iniziano a ruotare
+            logoWrapper.style.opacity = '1';
+            fullLogo.style.animation = 'move-and-rotate 2.5s forwards cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+            
+            // FASE 2: Dopo che la rotazione è completata (3000ms), avviamo la divisione e le altre animazioni
+            setTimeout(() => {
+                // Nascondiamo il logo intero
+                fullLogo.style.display = 'none';
+                
+                // Mostriamo le due metà e avviamo le animazioni di separazione
+                leftHalf.style.display = 'block';
+                rightHalf.style.display = 'block';
+                leftHalf.style.animation = 'split-and-open-left 1s forwards ease-out';
+                rightHalf.style.animation = 'split-and-open-right 1s forwards ease-out';
 
-    // Gestione animazione parole H1 (VERSIONE CORRETTA)
-    const words = document.querySelectorAll('.word-bounce');
-    if (words.length > 0) {
-        words.forEach((word, index) => {
-            word.style.animationDelay = `${0.5 + (index * 0.3)}s`;
-            word.style.animationName = 'bounceInUp';
-        });
+                // Appare il contenitore del titolo
+                titleContainer.style.opacity = '1';
+                titleContainer.style.visibility = 'visible';
+
+                // Animazione parola per parola del titolo
+                words.forEach((word, index) => {
+                    const delay = 500 + (index * 200); 
+                    setTimeout(() => {
+                        word.style.animation = 'bounceInUp 1.2s forwards';
+                    }, delay);
+                });
+
+                // Animazione del sottotitolo
+                const lastWordDelay = 500 + (words.length * 200);
+                setTimeout(() => {
+                    subTitle.style.animation = 'bounceInUp 1.2s forwards';
+                }, lastWordDelay + 300);
+    
+            }, 3000); 
+        }
     }
 
     // --- Funzione per caricare e visualizzare le news ---
     async function loadNews() {
         try {
-            const response = await fetch('/db.json');
+            const response = await fetch('db.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
             const newsContainer = document.getElementById('main-news-grid');
             const noNewsMessage = document.getElementById('no-main-news-message');
-
-            if (data.news && data.news.length > 0) {
+    
+            if (newsContainer && data.news && data.news.length > 0) {
                 noNewsMessage.style.display = 'none';
                 newsContainer.innerHTML = '';
                 
                 data.news.forEach(newsItem => {
-                    const newsArticle = document.createElement('article');
-                    newsArticle.className = 'news-article';
-
-                    const newsTitle = document.createElement('h3');
-                    newsTitle.textContent = newsItem.title;
-
-                    if (newsItem.image) {
-                        const newsImage = document.createElement('img');
-                        newsImage.src = newsItem.image;
-                        newsImage.alt = newsItem.title;
-                        newsArticle.appendChild(newsImage);
-                    }
-
-                    const newsBody = document.createElement('p');
-                    newsBody.textContent = newsItem.body;
-
-                    newsArticle.appendChild(newsTitle);
-                    newsArticle.appendChild(newsBody);
+                    const newsCard = document.createElement('div');
+                    newsCard.className = 'news-card';
                     
-                    newsContainer.appendChild(newsArticle);
+                    newsCard.innerHTML = `
+                        <div class="news-image-container">
+                            <img src="${newsItem.image}" alt="${newsItem.title}" class="news-image">
+                        </div>
+                        <div class="news-meta">
+                            <span class="news-category">${newsItem.category}</span>
+                            <span class="news-date">${newsItem.date}</span>
+                        </div>
+                        <h3 class="news-title">${newsItem.title}</h3>
+                        <p class="news-excerpt">${newsItem.excerpt}</p>
+                    `;
+                    newsContainer.appendChild(newsCard);
                 });
-            } else {
+            } else if (noNewsMessage) {
                 noNewsMessage.style.display = 'block';
             }
         } catch (error) {
             console.error("Errore nel caricamento delle news:", error);
             const noNewsMessage = document.getElementById('no-main-news-message');
             if (noNewsMessage) {
-                noNewsMessage.textContent = 'Errore nel caricamento delle news.';
+                noNewsMessage.textContent = 'Errore nel caricamento delle news. Controlla il file db.json e il percorso.';
                 noNewsMessage.style.display = 'block';
             }
         }
@@ -155,10 +208,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    // Controlla la pagina corrente per caricare i contenuti appropriati
-    if (document.body.classList.contains('media-page')) {
+    // Controlla la pagina corrente per caricare i contenuti appropriati e avviare l'animazione
+    const bodyClassList = document.body.classList;
+    if (bodyClassList.contains('media-page')) {
         loadMediaContent();
-    } else {
+    } else { // Pagina principale
         loadNews();
+        if (document.querySelector('.hero-slider')) {
+            handleIntroAnimation();
+        }
     }
 });

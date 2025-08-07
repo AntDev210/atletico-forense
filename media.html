@@ -62,8 +62,8 @@
                 <div class="section-header">
                     <h2>GALLERIA IMMAGINI</h2>
                 </div>
-                <div class="media-grid" id="image-gallery">
-                    <p id="no-images-message" class="no-content-message" style="text-align: center; color: #888; font-style: italic; display: none;">Nessuna immagine presente al momento.</p>
+                <div class="media-gallery-grid" id="image-gallery">
+                    <p id="no-images-message" class="no-media-message">Nessuna immagine presente al momento.</p>
                 </div>
             </section>
             
@@ -71,8 +71,8 @@
                 <div class="section-header">
                     <h2>VIDEO</h2>
                 </div>
-                <div class="media-grid" id="video-gallery">
-                    <p id="no-videos-message" class="no-content-message" style="text-align: center; color: #888; font-style: italic; display: none;">Nessun video presente al momento.</p>
+                <div class="media-gallery-grid" id="video-gallery">
+                    <p id="no-videos-message" class="no-media-message">Nessun video presente al momento.</p>
                 </div>
             </section>
         </div>
@@ -81,8 +81,15 @@
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <img src="images/logo-white.png" alt="Atletico Forense" class="footer-logo">
+                <div class="footer-col footer-logo-col">
+                    <div class="footer-logos">
+                        <a href="index.html">
+                            <img src="images/logo-white.png" alt="Atletico Forense" class="footer-logo">
+                        </a>
+                        <a href="https://ordineavvocaticuneo.it/" target="_blank" rel="noopener noreferrer">
+                            <img src="images/ordine_cuneo.png" alt="Ordine Avvocati Cuneo" class="footer-partner-logo">
+                        </a>
+                    </div>
                     <p>© 2025 Atletico Forense Cuneo<br>Tutti i diritti riservati</p>
                 </div>
                 
@@ -107,5 +114,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/media.js"></script>
 </body>
 </html>
