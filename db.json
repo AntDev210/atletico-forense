@@ -1,13 +1,14 @@
 {
-  "news": [],
-  "media": [
+  "news": [
     {
-      "type": "video",
       "date": "08/08/2025",
       "id": 1,
-      "title": "1",
-      "description": "1",
-      "src": "/uploads/media/video-whatsapp-2025-07-28-ore-19.59.08_33d116f3.mp4"
+      "title": "Here we go",
+      "excerpt": "Da oggi l'Atletico Forense Cuneo ha un proprio sito internet. Buona navigazione",
+      "content": "Per eventuali proposte, contattaci via mail: atleticoforensecuneo@gmail.com",
+      "category": "Sito web",
+      "image": "/uploads/media/oip.png"
     }
-  ]
+  ],
+  "media": []
 }
